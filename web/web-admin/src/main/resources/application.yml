@@ -1,0 +1,37 @@
+server:
+  port: 5002
+spring:
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  application:
+    name: web-admin
+  main:
+    # Spring Boot 2.1 需要设定
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      # Nacos 服务发现与注册配置
+      discovery:
+        server-addr: 127.0.0.1:8848
+dubbo:
+  registry:
+    # 挂载到 Spring Cloud 注册中心
+    address: spring-cloud://localhost
+  cloud:
+    #用于服务消费方订阅服务提供方的应用名称的列表，若需订阅多应用，使用 "," 分割。
+    subscribed-services: service-admin
+security:
+  oauth2:
+    client:
+      client-id: du_client
+      client-secret: du_secret
+      access-token-uri: http://localhost:6000/oauth/token
+      user-authorization-uri: http://localhost:6000/oauth/authorize
+    resource:
+      token-info-uri: http://localhost:6000/oauth/check_token

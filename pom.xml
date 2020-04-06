@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.4.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.lida.du</groupId>
+    <artifactId>parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>parent</name>
+    <description>Demo project for Spring Boot</description>
+
+    <modules>
+        <module>dependencies</module>
+        <module>common</module>
+        <module>gateway</module>
+        <module>api</module>
+        <module>business</module>
+        <module>web</module>
+        <module>auth</module>
+        <module>db</module>
+    </modules>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <licenses>
+        <license>
+            <name>Apache 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Lida Du</name>
+            <email>dulida@aliyun.com</email>
+        </developer>
+    </developers>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.lida.du</groupId>
+                <artifactId>dependencies</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+
+</project>

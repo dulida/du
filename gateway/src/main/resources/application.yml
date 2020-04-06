@@ -1,0 +1,34 @@
+server:
+  port: 5000
+spring:
+  application:
+    name: cloud-gateway
+  main:
+    # Spring Boot 2.1 需要设定
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      # Nacos 服务发现与注册配置
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]': # 匹配所有请求
+            allowedOrigins: "*" #跨域处理 允许所有的域
+            allowedMethods: # 支持的方法
+              - GET
+              - POST
+              - PUT
+              - DELETE
+      discovery:
+        #设置与服务注册发现组件结合，这样可以采用服务名的路由策略
+        locator:
+          enabled: true
+      routes:
+        - id: route_user
+          uri: lb://web-admin
+          predicates:
+            - Path=/api/user/**,/api/role/**,/api/permiss/**,/api/professional/**
+          filters:
+            - StripPrefix=1
