@@ -47,8 +47,10 @@ public class AuthorizationServerMemory extends AuthorizationServerConfigurerAdap
         // 客户端配置
         clients.inMemory()
                 .withClient("du_client")
-                .secret(passwordEncoder().encode("du_secret")
-                );
+                .secret(passwordEncoder().encode("du_secret"))
+                .authorizedGrantTypes("password")
+                .scopes("app")
+        ;
 
     }
 
@@ -102,11 +104,11 @@ public class AuthorizationServerMemory extends AuthorizationServerConfigurerAdap
      * @throws Exception
      */
     @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints)  {
         endpoints
                 // 用于支持密码模式
                 .authenticationManager(authenticationManager)
-                .tokenStore(tokenStore())
+                .tokenServices(tokenServices())
         ;
     }
 }

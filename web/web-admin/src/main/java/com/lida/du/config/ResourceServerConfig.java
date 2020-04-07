@@ -28,7 +28,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/**"). permitAll()
+                .antMatchers("/user/register"). permitAll()
                 .anyRequest().
                 //其他地址需要认证授权
                         authenticated();

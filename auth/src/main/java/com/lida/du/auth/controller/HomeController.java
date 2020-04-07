@@ -4,10 +4,7 @@ import com.lida.du.auth.service.HomeService;
 import com.lida.du.common.ReMsg;
 import com.lida.du.domain.LoginForm;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -22,7 +19,7 @@ public class HomeController {
     @Resource
     private HomeService homeService;
 
-    @GetMapping(value = "/login")
+    @PostMapping(value = "/login")
     public ReMsg login(@RequestBody @Validated LoginForm loginForm) {
         return ReMsg.ok(homeService.login(loginForm));
     }
